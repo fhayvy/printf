@@ -15,6 +15,9 @@ int _printf(const char *format, ...)
 	char ch;
 	char *sh;
 
+	if (format == NULL)
+		return (-1);
+
 	va_start(args, format);
 
 	while (*format)
