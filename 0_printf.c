@@ -11,8 +11,8 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	int printed = 0;
-	char ch;
+	int printed = 0, i = 0, length;
+	int ch;
 	char *sh;
 
 	if (format == NULL)
@@ -46,8 +46,10 @@ int _printf(const char *format, ...)
 			else if (*format == 's')
 			{
 				sh = va_arg(args, char *);
-				write(1, sh, strlen(sh));
-				printed += strlen(sh);
+				for (i = 0; sh[i] != '\0'; i++)
+					length++;
+				write(1, sh, length);
+				printed += length;
 			}
 		}
 		else
