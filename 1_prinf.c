@@ -1,9 +1,6 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
-#include <unistd.h>
+#include "main.h"
+
+
 /**
  * _printf - function that produces output accoring to a format
  * @format: formats to follow
