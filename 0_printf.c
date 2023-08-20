@@ -1,4 +1,4 @@
-#include <main.h>
+#include "main.h"
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
@@ -35,7 +35,7 @@ int _printf(const char *format, ...)
 			{
 				sh = va_arg(args, char *);
 				write(1, sh, strlen(sh));
-				printed++;
+				printed += strlen(sh);
 			}
 			else if (*format == '%')
 			{
@@ -50,6 +50,6 @@ int _printf(const char *format, ...)
 		}
 		format++;
 	}
-	va_end(arg);
+	va_end(args);
 	return (printed);
 }
