@@ -1,4 +1,3 @@
-#include "main.h"
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
@@ -50,4 +49,6 @@ int _printf(const char *format, ...)
 		}
 		format++;
 	}
+	va_end(arg);
+	return (printed);
 }
