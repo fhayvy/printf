@@ -37,7 +37,7 @@ int caseS(int count, char *dig)
 int caseMod(int count)
 {
 	write(1, "%", 1);
-	return (cont + 1);
+	return (count + 1);
 }
 /**
  * _printf - Produces output according to a format
@@ -46,33 +46,32 @@ int caseMod(int count)
  */
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int dig, i = 0;
-	char *dig2;
+	va_list arg;
+	int i = 0;
 
-	va_start(args, format);
+	va_start(arg, format);
 
 	if (format)
 	{
 		while (format[i])
 		{
-			if (*format[i] == '%')
+			if (format[i] == '%')
 			{
 				i++;
-				if (*format == 'c')
+				if (format[i] == 'c')
 					i = caseC(i, va_arg(arg, int));
-				else if (*format == 's')
-					i = caseC(i, va_arg(arg, char *));
-				else if (*format == 'c')
+				else if (format[i] == 's')
+					i = caseS(i, va_arg(arg, char *));
+				else if (format[i] == '%')
 					i = caseMod(i);
 			}
 			else
 			{
-				write(1, format, 1);
+				write(1, format + i, 1);
 				i++;
 			}
 		}
 	}
 	va_end(args);
-	return (printed);
+	return (i);
 }
