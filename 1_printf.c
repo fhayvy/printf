@@ -2,15 +2,15 @@
 /**
  * caseD - function to print digits
  * @count: track numbers of character
- * @dig: argument to store character
+ * @digs: argument to store character
  * Return: returns count
  */
-int caseD(int count, int dig)
+int caseD(int count, int digs)
 {
 	char *int_buffer;
 	int num_digits;
 
-	num_digits = snprintf(NULL, 0, "%d", dig);
+	num_digits = snprintf(NULL, 0, "%d", digs);
 	int_buffer = (char *)malloc(num_digits + 1);
 
 	if (int_buffer == NULL)
@@ -19,7 +19,7 @@ int caseD(int count, int dig)
 	}
 	else
 	{
-		snprintf(int_buffer, num_digits + 1, "%d", dig);
+		snprintf(int_buffer, num_digits + 1, "%d", digs);
 		write(1, int_buffer, num_digits);
 		free(int_buffer);
 	}
