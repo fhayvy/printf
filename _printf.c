@@ -38,10 +38,8 @@ int _printf(const char *format, ...)
 				printed += strlen(sh);
 			}
 			else if (*format == '%')
-			{
 				write(1, format, 1);
 				printed++;
-			}
 		}
 		format++;
 	}
