@@ -16,14 +16,14 @@ int _printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format != '%')
+		{
 			write(1, format, 1);
 			printed++;
+		}
 		else
 		{
 			format++;
-			if (*format == '\0')
-				break;
-			else if (*format == 'c')
+			if (*format == 'c')
 			{
 				ch = va_arg(args_list, int);
 				write(1, &ch, 1);
