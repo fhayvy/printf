@@ -6,23 +6,15 @@
  * @format: A character string
  * Return: The number of characters printed
  */
-
-
 int _printf(const char *format, ...)
 {
-	int printed = 0;
-	int ch;
+	int printed = 0, ch;
 	char *sh;
-
 	va_list args_list;
 
 	if (format == NULL)
-	{
 		return (-1);
-	}
-
 	va_start(args_list, format);
-
 	while (*format)
 	{
 		if (*format != '%')
@@ -34,9 +26,7 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			if (*format == '\0')
-			{
 				break;
-			}
 			else if (*format == 'c')
 			{
 				ch = va_arg(args_list, int);
@@ -60,3 +50,4 @@ int _printf(const char *format, ...)
 	va_end(args_list);
 	return (printed);
 }
+
