@@ -8,7 +8,7 @@
 int caseC(int count, int dig)
 {
 	write(1, &dig, 1);
-	return (count);
+	return (count++);
 }
 /**
  * caseS - function to write string
@@ -21,7 +21,7 @@ int caseS(int count, char *dig)
 	if (dig != NULL)
 	{
 		write(1, dig, strlen(dig));
-		return (count + strlen(dig));
+		return (count++);
 	}
 	else
 	{
@@ -37,7 +37,7 @@ int caseS(int count, char *dig)
 int caseMod(int count)
 {
 	write(1, "%", 1);
-	return (count + 1);
+	return (count++);
 }
 /**
  * _printf - Produces an output according to a format
