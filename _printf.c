@@ -1,47 +1,80 @@
 #include "main.h"
 /**
+ * caseC - function to write character
+ * @count: numbers to track character
+ * @dig: argument to store values
+ * Return: returns count
+ */
+int caseC(int count, int dig)
+{
+	write(1, &dig, 1);
+	return (count);
+}
+/**
+ * caseS - function to write string
+ * @count: numbers to track character
+ * @dig: pointer argument to store values
+ * Return: returns count
+ */
+int caseS(int count, char *dig)
+{
+	if (dig != NULL)
+	{
+		write(1, dig, strlen(dig));
+		return (count + strlen(dig));
+	}
+	else
+	{
+		write(1, "(null)", 6);
+		return (count + 6);
+	}
+}
+/**
+ * caseMod - function to write %
+ * @count: numbers to track character
+ * Return: returns count
+ */
+int caseMod(int count)
+{
+	write(1, "%", 1);
+	return (count + 1);
+}
+/**
  * _printf - Produces an output according to a format
  * @format: A character string
  * Return: The number of characters printed
  */
 int _printf(const char *format, ...)
 {
-	int printed = 0, ch;
-	char *sh;
+	int printed = 0;
 	va_list args_list;
 
 	if (format == NULL)
 		return (-1);
 	va_start(args_list, format);
-	while (*format)
+	while (format[printed])
 	{
-		if (*format != '%')
+		if (format[printed] == '%')
 		{
-			write(1, format, 1);
 			printed++;
+			if (format[printed] == 'c')
+			{
+				printed = caseC(printed, va_arg(args_list, int));
+			}
+			else if (format[printed] == 's')
+			{
+				printed = caseS(printed, va_arg(args_list, char *));
+			}
+			else if (format[printed] == '%')
+			{
+				printed = caseMod(printed);
+			}
 		}
 		else
 		{
-			format++;
-			if (*format == 'c')
-			{
-				ch = va_arg(args_list, int);
-				write(1, &ch, 1);
-				printed++;
-			}
-			else if (*format == 's')
-			{
-				sh = va_arg(args_list, char *);
-				write(1, sh, strlen(sh));
-				printed += strlen(sh);
-			}
-			else if (*format == '%')
-			{
-				write(1, format, 1);
-				printed++;
-			}
+			write(1, format + printed, 1);
+			printed++;
 		}
-		format++;
 	}
 	va_end(args_list);
 	return (printed);
