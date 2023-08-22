@@ -16,10 +16,8 @@ int _printf(const char *format, ...)
 	while (*format)
 	{
 		if (*format != '%')
-		{
 			write(1, format, 1);
 			printed++;
-		}
 		else
 		{
 			format++;
@@ -37,9 +35,11 @@ int _printf(const char *format, ...)
 				write(1, sh, strlen(sh));
 				printed += strlen(sh);
 			}
-			if (*format == '%')
+			else if (*format == '%')
+			{
 				write(1, format, 1);
 				printed++;
+			}
 		}
 		format++;
 	}
