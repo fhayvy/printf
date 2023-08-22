@@ -18,16 +18,8 @@ int caseC(int count, int dig)
  */
 int caseS(int count, char *dig)
 {
-	if (dig != NULL)
-	{
-		write(1, dig, strlen(dig));
-		return (count++);
-	}
-	else
-	{
-		write(1, "(null)", 6);
-		return (count + 6);
-	}
+	write(1, dig, strlen(dig));
+	return (count + strlen(dig));
 }
 /**
  * caseMod - function to write %
