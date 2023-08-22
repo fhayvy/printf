@@ -6,6 +6,8 @@
  * @format: A character string
  * Return: The number of characters printed
  */
+
+
 int _printf(const char *format, ...)
 {
 	int printed = 0, ch;
