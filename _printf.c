@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 				write(1, sh, strlen(sh));
 				printed += strlen(sh);
 			}
-			else if (*format == '%')
+			if (*format == '%')
 				write(1, format, 1);
 				printed++;
 		}
