@@ -38,8 +38,7 @@ int caseMod(int count)
  */
 int _printf(const char *format, ...)
 {
-	int printed = 0, ch;
-	char *sh;
+	int printed = 0;
 	va_list args_list;
 
 	if (format == NULL)
@@ -52,20 +51,10 @@ int _printf(const char *format, ...)
 			printed++;
 			if (format[printed] == 'c')
 			{
-				/**
-				 * ch = va_arg(args_list, int);
-				 * write(1, &ch, 1);
-				 * printed++;
-				 */
 				printed = caseC(printed, va_arg(args_list, int));
 			}
 			else if (format[printed] == 's')
 			{
-				/**
-				 * sh = va_arg(args_list, char *);
-				 * write(1, sh, strlen(sh));
-				 * printed += strlen(sh)
-				 */
 				printed = caseS(printed, va_arg(args_list, char *));
 			}
 			else if (format[printed] == '%')
