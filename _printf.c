@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			printed++;
+			format++;
 			if (*format == 'c')
 			{
 				ch = va_arg(args_list, int);
