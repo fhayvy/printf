@@ -39,8 +39,9 @@ int _printf(const char *format, ...)
 		else
 		{
 			write(1, format, 1);
-			format++;
+			print++;
 		}
+		format++;
 	}
 	va_end(args_list);
 	return (printed);
