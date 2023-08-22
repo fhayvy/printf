@@ -1,6 +1,4 @@
 #include "main.h"
-
-
 /**
  * _printf - Produces an output according to a format
  * @format: A character string
@@ -23,7 +21,6 @@ int _printf(const char *format, ...)
 			printed++;
 		}
 		else
-		{
 			format++;
 			if (*format == '\0')
 				break;
@@ -44,7 +41,6 @@ int _printf(const char *format, ...)
 				write(1, format, 1);
 				printed++;
 			}
-		}
 		format++;
 	}
 	va_end(args_list);
