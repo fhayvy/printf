@@ -40,8 +40,8 @@ int _printf(const char *format, ...)
 		{
 			write(1, format, 1);
 			printed++;
+			format++;
 		}
-		format++;
 	}
 	va_end(args_list);
 	return (printed);
