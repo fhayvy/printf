@@ -20,13 +20,21 @@ int printChar(va_list args_list, char buffer_[], int flags_,
 /**
  * printString - function to print a character
  * @args_list: first variable
+ * @buffer_: array to store foramt
  * @flags_: third vairable
  * @width_: fourth variable
  * @precision_: to check precision spec
+ * @size_: to get size of array
  * Return: to return numbers of characters printed
  */
-int printString(va_list args_list, int flags_, int width_, int precision_)
+int printString(va_list args_list, char buffer_[], int flags_, int width_, int precision_, int size_)
 {
+	UNUSED(buffer_);
+	UNUSED(flags_);
+	UNUSED(width_);
+	UNUSED(precision_);
+	UNUSED(size_);
+
 	int length = 0, i;
 	char *str_extract;
 
@@ -48,7 +56,7 @@ int printString(va_list args_list, int flags_, int width_, int precision_)
 
 	if (width_ > length)
 	{
-		if (flags_ && F_MINUS)
+		if (flags_ & F_MINUS)
 		{
 			write(1, &str_extract[0], length);
 			for (i = width_ - length; i > 0; i--)
@@ -67,10 +75,23 @@ int printString(va_list args_list, int flags_, int width_, int precision_)
 }
 /**
  * printPercent - function to print a character
+ * @args_list: list of arguments
+ * @buffer_: array to store format
+ * @flags_: to deduce flags
+ * @width_: to deduce width
+ * @precision_: to check precision spec
+ * @size_: to get size of array
  * Return: to return numbers of characters printed
  */
-int printPercent(void)
+int printPercent(va_list args_list, char buffer_[], int flags_,
+		int width_, int precision_, int size_)
 {
+	UNUSED(args_list);
+	UNUSED(buffer_);
+	UNUSED(flags_);
+	UNUSED(width_);
+	UNUSED(precision_);
+	UNUSED(size_);
 	return (write(1, "%%", 1));
 }
 /**
@@ -90,7 +111,7 @@ int printInt(va_list args_list, char buffer_[], int flags_,
 	long int n = va_arg(args_list, long int);
 	unsigned long int num;
 
-	n = convert_size_num(n, size_);
+	n = convert_size_number(n, size_);
 
 	if (n == 0)
 	{
@@ -111,7 +132,7 @@ int printInt(va_list args_list, char buffer_[], int flags_,
 		num /= 10;
 	}
 	i++;
-	int write_numbers = write_num(is_negative, i, buffer_, flags_,
+	int write_numbers = write_number(is_negative, i, buffer_, flags_,
 			width_, precision_, size_);
 
 	return (write_numbers);
@@ -119,13 +140,25 @@ int printInt(va_list args_list, char buffer_[], int flags_,
 /**
  * printBinary - function to print a character
  * @args_list: list of arguments
+ * @buffer_: array to store format
+ * @flags_: to deduce flags
+ * @width_: to deduce width
+ * @precision_: to check precision spec
+ * @size_: to get size of array
  * Return: to return numbers of characters printed
  */
-int printBinary(va_list args_list)
+int printBinary(va_list args_list, char buffer_[], int flags_,
+		int width_, int precision_, int size_)
 {
 	unsigned int n, m, i, sum;
 	unsigned int a[32];
 	int count;
+
+	UNUSED(buffer_);
+	UNUSED(flags_);
+	UNUSED(width_);
+	UNUSED(precision_);
+	UNUSED(size_);
 
 	n = va_arg(args_list, unsigned int);
 	m = 2147483648;
